@@ -1,0 +1,157 @@
+/*
+ * EdgeCalc design tokens.
+ * Two tiers: primitives (named by hue/step, never used in components) and
+ * semantic tokens (named by role, the only tier components reference).
+ * Theme follows the system via prefers-color-scheme; there is no toggle.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---- Primitives: neutral ramp (hue 260, near-neutral chroma) ---- */
+  --gray-0: oklch(100% 0 0);
+  --gray-50: oklch(97.5% 0.004 260);
+  --gray-100: oklch(95% 0.006 260);
+  --gray-200: oklch(90% 0.008 260);
+  --gray-300: oklch(84% 0.01 260);
+  --gray-500: oklch(56% 0.016 260);
+  --gray-600: oklch(46% 0.018 260);
+  --gray-800: oklch(27% 0.016 260);
+  --gray-850: oklch(23% 0.014 260);
+  --gray-900: oklch(19% 0.012 260);
+  --gray-950: oklch(15.5% 0.01 260);
+  --gray-1000: oklch(12% 0.01 260);
+
+  /* ---- Primitives: accent ramp (indigo, hue 272) ---- */
+  --indigo-100: oklch(94% 0.03 272);
+  --indigo-300: oklch(80% 0.09 272);
+  --indigo-500: oklch(56% 0.18 272); /* dark-mode solid: white text measures 4.87:1 */
+  --indigo-600: oklch(52% 0.19 272);
+  --indigo-700: oklch(45% 0.19 272);
+  --indigo-900: oklch(30% 0.09 272);
+
+  /* ---- Primitives: positive (green, hue 152) ---- */
+  --green-100: oklch(94% 0.05 152);
+  --green-300: oklch(80% 0.13 152);
+  --green-600: oklch(50% 0.14 152);
+  --green-700: oklch(43% 0.13 152);
+  --green-900: oklch(27% 0.05 152);
+
+  /* ---- Primitives: negative (red, hue 25) ---- */
+  --red-100: oklch(94.5% 0.035 25);
+  --red-300: oklch(78% 0.13 25);
+  --red-600: oklch(52% 0.19 25);
+  --red-700: oklch(46% 0.18 25);
+  --red-900: oklch(27% 0.06 25);
+
+  /* ---- Primitives: caution (amber, hue 75) ---- */
+  --amber-100: oklch(95% 0.05 75);
+  --amber-300: oklch(83% 0.13 75);
+  --amber-700: oklch(48% 0.11 75);
+  --amber-900: oklch(30% 0.05 75);
+
+  /* ---- Semantic: surfaces ---- */
+  --color-bg-page: var(--gray-50);
+  --color-bg-surface: var(--gray-0);
+  --color-bg-subtle: var(--gray-100);
+  --color-bg-inset: var(--gray-50);
+  --color-border: var(--gray-200);
+  --color-border-strong: var(--gray-300);
+
+  /* ---- Semantic: text ---- */
+  --color-text: var(--gray-900);
+  --color-text-secondary: var(--gray-600);
+  --color-text-on-accent: var(--gray-0);
+
+  /* ---- Semantic: accent (interactive) ---- */
+  --color-accent: var(--indigo-600);
+  --color-accent-hover: var(--indigo-700);
+  --color-accent-text: var(--indigo-700);
+  --color-accent-soft: var(--indigo-100);
+  --color-focus: var(--indigo-600);
+
+  /* ---- Semantic: status ---- */
+  --color-positive-text: var(--green-700);
+  --color-positive-soft: var(--green-100);
+  --color-negative-text: var(--red-700);
+  --color-negative-soft: var(--red-100);
+  --color-caution-text: var(--amber-700);
+  --color-caution-soft: var(--amber-100);
+
+  /* ---- Elevation ---- */
+  --shadow-card:
+    0 0 0 1px oklch(0 0 0 / 0.06),
+    0 1px 2px oklch(0 0 0 / 0.05),
+    0 4px 12px oklch(0 0 0 / 0.04);
+
+  /* ---- Typography ---- */
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  --text-xs: 0.75rem; /* 12px captions, table meta */
+  --text-sm: 0.875rem; /* 14px labels, hints, table cells */
+  --text-base: 1rem; /* 16px body, inputs */
+  --text-lg: 1.125rem; /* 18px h3 */
+  --text-xl: 1.375rem; /* 22px h2, stat values */
+  --text-2xl: 1.75rem; /* 28px h1 */
+  --leading-tight: 1.15;
+  --leading-body: 1.5;
+  --tracking-heading: -0.01em;
+  --tracking-caps: 0.04em;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* ---- Shape ---- */
+  --radius-sm: 0.375rem; /* 6px: inline chips, badges */
+  --radius-md: 0.5rem; /* 8px: inputs, buttons, stat tiles */
+  --radius-lg: 0.875rem; /* 14px: section cards */
+
+  /* ---- Layout ---- */
+  --content-max: 68rem;
+  --measure: 65ch;
+  --control-height: 2.75rem; /* 44px touch target */
+
+  /* ---- Motion ---- */
+  --duration-fast: 120ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-page: var(--gray-950);
+    --color-bg-surface: var(--gray-900);
+    --color-bg-subtle: var(--gray-850);
+    --color-bg-inset: var(--gray-1000);
+    --color-border: var(--gray-800);
+    --color-border-strong: var(--gray-600);
+
+    --color-text: oklch(95% 0.005 260);
+    --color-text-secondary: oklch(74% 0.012 260);
+    --color-text-on-accent: var(--gray-0);
+
+    --color-accent: var(--indigo-500);
+    --color-accent-hover: var(--indigo-300);
+    --color-accent-text: var(--indigo-300);
+    --color-accent-soft: var(--indigo-900);
+    --color-focus: var(--indigo-300);
+
+    --color-positive-text: var(--green-300);
+    --color-positive-soft: var(--green-900);
+    --color-negative-text: var(--red-300);
+    --color-negative-soft: var(--red-900);
+    --color-caution-text: var(--amber-300);
+    --color-caution-soft: var(--amber-900);
+
+    --shadow-card:
+      0 0 0 1px oklch(1 0 0 / 0.08),
+      0 1px 2px oklch(0 0 0 / 0.4),
+      0 4px 12px oklch(0 0 0 / 0.3);
+  }
+}

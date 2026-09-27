@@ -1,0 +1,10 @@
+# Dependencies and caches (never committed; dist/ IS committed)
+node_modules/
+.npm/
+.vite/
+*.tgz
+npm-debug.log*
+
+# Editor and OS noise
+.DS_Store
+*.swp
